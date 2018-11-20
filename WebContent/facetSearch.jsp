@@ -135,7 +135,7 @@
 				<p>
 				<h4>Sources and Entity Types</h4>
 				<ol class="bulletedList">
-					<li>ClinicalTrials.gov <i>(289,056 entries)</i>
+					<li>ClinicalTrials.gov <i>(290,568 entries)</i>
 					<ol class="bulletedList">
 						<li>Clinical Trial
 						<li>Official Contact
@@ -148,7 +148,7 @@
 					<ol class="bulletedList">
 						<li>Data Set
 					</ol>
-					<li>DataCite.org <i>(13,325,661 entries)</i>
+					<li>DataCite.org <i>(13,535,764 entries)</i>
 					<ol class="bulletedList">
 						<li>Data Set
 					</ol>
@@ -164,7 +164,7 @@
 						<li>Organization
 						<li>Educational Resource
 					</ol>
-					<li>DIAMOND <i>(95 entries)</i>
+					<li>DIAMOND <i>(103 entries)</i>
 					<ol class="bulletedList">
 						<li>Assessment
 						<li>Training Material
