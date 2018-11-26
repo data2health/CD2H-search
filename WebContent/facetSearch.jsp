@@ -46,10 +46,11 @@
 				<util:Log line="" message="query: ${param.query}"	page="ctsaSearch" level="INFO"></util:Log>
 				<h3>Search Results:	<c:out value="${displayString}" /></h3>
 
-				<lucene:taxonomy taxonomyPath="/usr/local/CD2H/lucene/facet_test_tax">
+				<lucene:taxonomy taxonomyPath="/usr/local/CD2H/lucene/cd2hsearch_tax">
 					<lucene:countFacetRequest categoryPath="Source" depth="3" />
 					<lucene:countFacetRequest categoryPath="Entity" depth="3" />
-					<lucene:countFacetRequest categoryPath="Site" depth="3" />
+					<lucene:countFacetRequest categoryPath="Unit" depth="2" />
+                    <lucene:countFacetRequest categoryPath="Site" depth="3" />
 					<lucene:countFacetRequest categoryPath="CTSA" />
                     <lucene:countFacetRequest categoryPath="Learning Level" />
                     <lucene:countFacetRequest categoryPath="Assessment Method" />
@@ -62,13 +63,15 @@
 					
 					<c:set var="drillDownList"><lucene:drillDownProcessor categoryPaths="${param.drillDown}" drillUpCategory="${param.drillUp}" drillOutCategory="${param.drillOut}" /></c:set>
 
-					<lucene:search lucenePath="/usr/local/CD2H/lucene/facet_test" label="content" queryParserName="boolean" queryString="${param.query}" useConjunctionByDefault="true">
+					<lucene:search lucenePath="/usr/local/CD2H/lucene/cd2hsearch" label="content" queryParserName="boolean" queryString="${param.query}" useConjunctionByDefault="true">
 						<div style="with: 100%">
 							<div style="width: 40%; padding: 0px 120px 0px 0px; float: left">
 								<h5>Facets:</h5>
 								<ol class="bulletedList">
 									<lucene:facetIterator>
 										<c:set var="facet1"><lucene:facet label="content" /></c:set>
+                                        <c:set var="facetCount"><lucene:facet label="count" /></c:set>
+                                        <c:if test="${facetCount > 0 }">
 										<li><lucene:facet label="content"> (<lucene:facet label="count" />)
                                             <ol class="bulletedList">
 													<lucene:facetIterator>
@@ -113,6 +116,7 @@
 								                </ol>
 								                    </lucene:facet>
 								                </li>
+                                        </c:if>
 								        </lucene:facetIterator>
 								</ol>
 							</div>
