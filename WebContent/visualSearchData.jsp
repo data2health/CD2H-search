@@ -30,7 +30,7 @@
 
 
 <graph:graph>
-	<lucene:search lucenePath="/usr/local/CD2H/lucene/federated_search" label="content" queryParserName="${param.mode}" queryString="${queryString}">
+	<lucene:search lucenePath="/usr/local/RAID/CTSAsearch/lucene/ctsasearch" label="content" queryParserName="${param.mode}" queryString="${queryString}">
 		<c:set var="count"><lucene:count /></c:set>
 		<lucene:searchIterator limitCriteria="500">
 			<c:set var="uri"><lucene:hit label="url"/></c:set>

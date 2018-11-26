@@ -100,8 +100,19 @@
 						</ol>
 					</c:when>
 					<c:when test="${param.mode == 'concept'}">
+						<c:set var="tempDrill" value=""/>
+						<c:if test="${not empty param.drillDown}">
+							<c:set var="tempDrill" value="&drillDown=${param.drillDown}"/>
+						</c:if>
+						<c:if test="${not empty param.drillUp}">
+							<c:set var="tempDrill" value="${param.tempDrill}&drillUp=${param.drillDown}"/>
+						</c:if>
+						<c:if test="${not empty param.drillOut}">
+							<c:set var="tempDrill" value="${param.tempDrill}&drillUp=${param.drillOut}"/>
+						</c:if>
 						<jsp:include page="conceptHierarchy.jsp" flush="true">
 							<jsp:param name="target_page" value="textSearch.jsp" />
+							<jsp:param name="drilling" value="${tempDrill}" />
 						</jsp:include>
 					</c:when>
 					<c:otherwise>
@@ -130,27 +141,76 @@
 					<c:out value="${displayString}" />
 				</h3>
 				<!-- Query string: <c:out value="${queryString}"/> -->
-				<lucene:search lucenePath="/usr/local/CD2H/lucene/federated_search"
-					label="content" queryParserName="${mode}"
-					queryString="${queryString}">
-					<p>
-						Result Count:
-						<lucene:count />
-					</p>
-					<ol class="bulletedList">
-						<lucene:searchIterator>
-							<c:set var="first_name">
-								<lucene:hit label="first_name" />
-							</c:set>
-							<c:set var="last_name">
-								<lucene:hit label="last_name" />
-							</c:set>
-							<c:set var="label" value="${first_name} ${last_name}" />
 
+				<lucene:taxonomy taxonomyPath="/usr/local/RAID/CTSAsearch/lucene/ctsasearch_tax">
+					<lucene:countFacetRequest categoryPath="Unit" depth="2" />
+                    <lucene:countFacetRequest categoryPath="Site" depth="3" />
+					<lucene:countFacetRequest categoryPath="CTSA" />
+					
+					<c:set var="drillDownList"><lucene:drillDownProcessor categoryPaths="${param.drillDown}" drillUpCategory="${param.drillUp}" drillOutCategory="${param.drillOut}" /></c:set>
 
-							<li><a href="<lucene:hit label="url"/>">${label}</a>, <lucene:hit
-									label="title" />, <sql:query var="years"
-									dataSource="jdbc/RDFUtil">
+					<lucene:search lucenePath="/usr/local/RAID/CTSAsearch/lucene/ctsasearch" label="content" queryParserName="boolean" queryString="${queryString}" useConjunctionByDefault="true">
+						<div style="with: 100%">
+							<div style="width: 40%; padding: 0px 120px 0px 0px; float: left">
+								<h5>Facets:</h5>
+								<ol class="bulletedList">
+									<lucene:facetIterator>
+										<c:set var="facet1"><lucene:facet label="content" /></c:set>
+                                        <c:set var="facetCount"><lucene:facet label="count" /></c:set>
+                                        <c:if test="${facetCount > 0 }">
+										<li><lucene:facet label="content"> (<lucene:facet label="count" />)
+                                            <ol class="bulletedList">
+													<lucene:facetIterator>
+														<c:set var="facet2path">${facet1}/<lucene:facet	label="content" /></c:set>
+														<c:set var="facet2"><lucene:facet label="content" /></c:set>
+														<lucene:facet label="none">
+															<c:choose>
+																<c:when	test="${fn:contains(drillDownList, facet2path.concat('|'))}">
+																	<li><lucene:facet label="content" /> <a	href="textSearch.jsp?mode=${param.mode}&query=${param.query}&drillDown=${drillDownList}&drillUp=${facet2path}">x</a>
+																</c:when>
+																<c:when test="${fn:contains(drillDownList, facet2path)}">
+																	<li><lucene:facet label="content" />
+																</c:when>
+																<c:otherwise>
+																	<li><a href="textSearch.jsp?mode=${param.mode}&query=${param.query}&drillDown=${drillDownList}${facet2path}">${facet2}</a> (<lucene:facet label="count" />)
+																</c:otherwise>
+															</c:choose>
+															<ol class="bulletedList">
+																<lucene:facetIterator>
+																	<c:set var="facet3path">${facet2path}/<lucene:facet	label="content" /></c:set>
+																	<c:set var="facet3"><lucene:facet label="content" /></c:set>
+																	<lucene:facet label="none">
+																		<c:choose>
+																			<c:when	test="${fn:contains(drillDownList, facet3path.concat('|'))}">
+																				<li><lucene:facet label="content" />
+																				<a	href="textSearch.jsp?mode=${param.mode}&query=${param.query}&drillDown=${drillDownList}&drillOut=${facet3path}">&larr;</a>
+		                                                                      <a  href="textSearch.jsp?mode=${param.mode}&query=${param.query}&drillDown=${drillDownList}&drillUp=${facet3path}">x</a>
+        																	</c:when>
+																			<c:when	test="${fn:contains(drillDownList, facet3path)}">
+																				<li><lucene:facet label="content" />
+																			</c:when>
+																			<c:otherwise>
+																				<li><a	href="textSearch.jsp?mode=${param.mode}&query=${param.query}&drillDown=${drillDownList}${facet3path}">${facet3}</a> (<lucene:facet label="count" />)
+																			</c:otherwise>
+																		</c:choose></li>
+										                              </lucene:facet>
+									                           </lucene:facetIterator>
+								                            </ol>
+								                            </li>
+								                        </lucene:facet>
+								                    </lucene:facetIterator>
+								                </ol>
+								                    </lucene:facet>
+								                </li>
+                                        </c:if>
+								        </lucene:facetIterator>
+								</ol>
+							</div>
+							<div style="width: 60%; float: left">
+								<p>Result Count: <lucene:count /></p>
+								<ol class="bulletedList">
+									<lucene:searchIterator>
+									<li><a href="<lucene:hit label="url"/>"><lucene:hit label="label" /></a>, <sql:query var="years" dataSource="jdbc/RDFUtil">
 					                    select description
 					                    from vivo.site
 					                    where id = ?::int
@@ -161,12 +221,14 @@
 									varStatus="yrowCounter">
 									<c:out value="${yrow.description}" />
 								</c:forEach></li>
-						</lucene:searchIterator>
-					</ol>
-				</lucene:search>
+									</lucene:searchIterator>
+								</ol>
+							</div>
+						</div>
+					</lucene:search>
+				</lucene:taxonomy>
 			</c:if>
 		</div>
-		<jsp:include page="footer.jsp" flush="true" />
 	</div>
 </body>
 
