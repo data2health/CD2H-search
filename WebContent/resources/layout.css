@@ -23,26 +23,26 @@ p {
 	padding: 0 30px 10px 0;
 }
 
-#local_fieldset {
+fieldset {
 	display: block;
-    margin-left: 2px;
+    margin-left: 4px;
     margin-right: 2px;
     padding-top: 0.35em;
     padding-bottom: 0.625em;
-    padding-left: 0.75em;
+    padding-left: 1.0em;
     padding-right: 0.75em;
-	border: 2px groove (internal value);
+	border: 2px;
+	border-style: solid;
 	border-width: thin;
-	}
 }
 
 legend {
-	font-size: .85em;
+	font-size: 1.2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+	width: auto;
 }
 
-a {
-	color: #B08200;
-}
 a:hover {
 	background-color: #EAEAEA;
 }
@@ -166,9 +166,7 @@ table td {
 	line-height: 1.5em;
 	color: #000000;
 }
-table a {
-	color: #CC9900;
-}
+
 
 /*this is to keep page from shifting to left on load in safari and firefox*/
 

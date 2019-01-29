@@ -6,8 +6,6 @@
 <%@ taglib prefix="rdf" uri="http://icts.uiowa.edu/RDFUtil"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<%@include file="statisticsLoad.jsp"%>
-
 <!DOCTYPE html>
 <html lang="en-US">
 <jsp:include page="head.jsp" flush="true">
@@ -31,11 +29,11 @@
 							<td><fieldset>
 									<legend>Query?</legend>
 									<input name="query" value="${param.query}" size=50> <input type=submit name=submitButton value=Search>
+                <a href="facetSearch.jsp">reset</a>
 								</fieldset></td>
 						</tr>
 					</table>
 				</form>
-				<a href="facetSearch.jsp">reset</a>
 			</div>
 			<br/>
 			<c:choose>
@@ -45,7 +43,7 @@
 				<util:Log line="" message="requesting host: ${host}" page="ctsaSearch" level="INFO"></util:Log>
 				<util:Log line="" message="query: ${param.query}"	page="ctsaSearch" level="INFO"></util:Log>
 				<h3>Search Results:	<c:out value="${displayString}" /></h3>
-
+                <div style="width: 100%; float: left">
 				<lucene:taxonomy taxonomyPath="/usr/local/CD2H/lucene/cd2hsearch_tax">
 					<lucene:countFacetRequest categoryPath="Source" depth="3" />
 					<lucene:countFacetRequest categoryPath="Entity" depth="3" />
@@ -131,6 +129,7 @@
 						</div>
 					</lucene:search>
 				</lucene:taxonomy>
+                </div>
 			</c:when>
 			<c:otherwise>
 				This proof-of-concept explores multi-faceted search across multiple federated sources, both internal to CD2H and the CTSA Consortium and more broadly across the entire informatics community.
@@ -180,6 +179,9 @@
 				</ol>
 			</c:otherwise>
 			</c:choose>
+            <div style="width: 100%; float: left">
+                <jsp:include page="footer.jsp" flush="true" />
+            </div>
 		</div>
 	</div>
 </body>
