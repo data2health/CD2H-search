@@ -38,4 +38,5 @@ WebContent/statisticsLoad.jsp -text
 WebContent/textSearch.jsp -text
 WebContent/visualSearch.jsp -text
 WebContent/visualSearchData.jsp -text
+WebContent/webSearch.jsp -text
 /pom.xml -text
