@@ -26,6 +26,7 @@ WebContent/images/masthead-hhs-logo.png -text svneol=unset#image/png
 WebContent/images/masthead-nih-logo.png -text svneol=unset#image/png
 WebContent/images/onlinelogomaker-111617-1142-7717.png -text svneol=unset#image/png
 WebContent/index.jsp -text
+WebContent/nestedFacet.jsp -text
 WebContent/resources/cd2h -text
 WebContent/resources/css -text
 WebContent/resources/d3.v3.min.js -text
@@ -34,6 +35,8 @@ WebContent/resources/layout.css -text
 WebContent/resources/slick.min.css -text
 WebContent/resources/style.css -text
 WebContent/resources/styles.css -text
+WebContent/sparcResult.jsp -text
+WebContent/sparcSearch.jsp -text
 WebContent/statisticsLoad.jsp -text
 WebContent/textSearch.jsp -text
 WebContent/visualSearch.jsp -text
