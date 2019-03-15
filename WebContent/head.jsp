@@ -19,17 +19,14 @@
 <link rel='stylesheet' id='contact-form-7-css'
 	href='https://ctsa.ncats.nih.gov/cd2h/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.0.3'
 	type='text/css' media='all' />
-<link rel='stylesheet' id='bootstrap_css-css'
-	href='https://ctsa.ncats.nih.gov/cd2h/wp-content/themes/ctsa-website/bootstrap-4.1.2-dist/css/bootstrap.min.css?ver=4.9.7'
-	type='text/css' media='all' />
+<link rel="stylesheet" id='bootstrap main'
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" id='font-awesome'
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel='stylesheet' id='slick_js_css-css'
 	href='https://ctsa.ncats.nih.gov/cd2h/wp-content/themes/ctsa-website/css/slick.min.css?ver=4.9.7'
-	type='text/css' media='all' />
-<link rel='stylesheet' id='main_css-css'
-	href='https://ctsa.ncats.nih.gov/cd2h/wp-content/themes/ctsa-website/style.css?ver=4.9.7'
-	type='text/css' media='all' />
-<link rel='stylesheet' id='sccss_style-css'
-	href='https://ctsa.ncats.nih.gov/cd2h/?sccss=1&#038;ver=4.9.7'
 	type='text/css' media='all' />
 <script type='text/javascript'
 	src='https://ctsa.ncats.nih.gov/cd2h/wp-content/themes/ctsa-website/scripts/jquery-3.3.1.min.js?ver=3.3.1'></script>

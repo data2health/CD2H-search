@@ -11,72 +11,53 @@
 </jsp:include>
 <style type="text/css" media="all">
 @import "resources/layout.css";
+
+.index-icon{
+	text-align:center;
+	color:grey;
+	opacity: 0.7;
+}
 </style>
 
 <body class="home page-template-default page page-id-6 CD2H">
-<script type="text/javascript">
-	var pressed = false;
-	
-	function alterAction() {
-		if (pressed)
-			document.queryForm.action= 'visualSearch.jsp';
-		else
-			document.queryForm.action = 'textSearch.jsp';
-		return true;
-	}
-</script>
-		<jsp:include page="header.jsp" flush="true" />
+	<jsp:include page="header.jsp" flush="true" />
 
-    <div class="container pl-0 pr-0">
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-<div class="container-fluid">
+	<div class="container pl-0 pr-0">
+		<br /> <br /> 
+		<div class="container-fluid">
 
-<h2>What is CTSAsearch?</h2>
-
-
-		<p>CTSAsearch is a federated search engine using Linked Open Data
-			published by members of the CTSA Consortium and other interested
-			parties. To try it out, use the form below.</p>
-			
-			<p>The CD2H faceted search prototype is available <a href="facetSearch.jsp">here.</a></p>
-
-<c:set var="displayMode" value="bar"/>
-<c:if test="${not empty param.mode}">
-	<c:set var="displayMode" value="${param.mode}"/>	
-</c:if>
-
-
-<h2>Search for Investigators at ${count_institutions} Institutions</h2>
-<form name="queryForm" method='POST' onsubmit="return alterAction();">
-	<input type="hidden" name="detectionAlg" value="site" />
-	<table border="0">
-		<tr>
-			<td>
-				<fieldset><legend>Visualize?</legend>
-				<input type="checkbox" id="checker" name="checker" onclick="pressed = !pressed;" /> Display graph&nbsp;&nbsp;&nbsp;
-				</fieldset>
-			</td>
-			<td>
-				<fieldset><legend>Handling of query terms?</legend>
-				<input type="radio" name="mode" value="text" checked> Text only<br>
-				<input type="radio" name="mode" value="concept"> UMLS concepts (including support for boolean search using &amp;,|, and !)
-				</fieldset>
-			</td>
-		</tr>
-		<tr>
-			<td colspan=2>
-				<fieldset><legend>Query?</legend>
-				<input name="query" value="${param.query}" size=50> <input type=submit name=submitButton value=Search>
-				</fieldset>
-			</td>
-		</tr>
-	</table>
-</form>
+			<h2>What is CTSAsearch?</h2>
+			<div style="width:80%;">
+			<p>CTSAsearch is a federated search engine that targets Linked Open Data published by members
+			 of the CTSA Consortium and other interested parties. Our goal is to address the information
+			  needs of a variety of community members including basic scientists, informaticists, and clinicians.
+			   We welcome any feedback to better design and build tools in our mission to support CTSA activities.</p>
 			</div>
+			<hr>
+			
+			<h4 style="text-align:center; font-weight:400;"><i style="color:#7bbac6;"class="fas fa-search"></i>   Tools:</h4><br>
+			<div class="row justify-content-center">
+  				<div class="col-sm-4">
+    				<div class="card">
+      					<div class="card-body">
+        					<h5 class="card-title"><a href="<util:applicationRoot/>/search_home.jsp">People Search</a></h5>
+        					<p>Search by keyword or UMLS concept for People and Expertise within data published by the CTSA consortium.</p>
+        					<div class="index-icon"><i class="fas fa-user fa-3x"></i></div>
+      					</div>
+    				</div>
+  				</div>
+  				<div class="col-sm-4">
+    				<div class="card">
+      					<div class="card-body">
+        					<h5 class="card-title"><a href="<util:applicationRoot/>/facetSearch.jsp">Faceted Search</a></h5>
+        					<p>Search by keyword and browse our expanded data offering including a multitude of entities and data types.</p>
+        					<div class="index-icon"><i class="fas fa-sitemap fa-3x"></i></div>
+      					</div>
+    				</div>
+  				</div>
+  			</div>
+
+		</div>
 		<jsp:include page="footer.jsp" flush="true" />
 </body>
 

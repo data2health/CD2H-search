@@ -14,13 +14,16 @@ WebContent/META-INF/MANIFEST.MF -text
 WebContent/WEB-INF/web.xml -text svneol=unset#application/xml
 WebContent/conceptHierarchy.jsp -text
 WebContent/facetSearch.jsp -text
+WebContent/footer(old).jsp -text
 WebContent/footer.jsp -text
 WebContent/graphs/forceGraph.jsp -text
 WebContent/head.jsp -text
+WebContent/header(old).jsp -text
 WebContent/header.jsp -text
 WebContent/images/bullet-l1.gif -text svneol=unset#image/gif
 WebContent/images/cd2h_honeycomb.png -text svneol=unset#image/png
 WebContent/images/ctsa-g-logo.jpg -text svneol=unset#image/jpeg
+WebContent/images/labslogo2.png -text svneol=unset#image/png
 WebContent/images/masthead-divider.png -text svneol=unset#image/png
 WebContent/images/masthead-hhs-logo.png -text svneol=unset#image/png
 WebContent/images/masthead-nih-logo.png -text svneol=unset#image/png
@@ -31,10 +34,12 @@ WebContent/resources/cd2h -text
 WebContent/resources/css -text
 WebContent/resources/d3.v3.min.js -text
 WebContent/resources/jdbc_environment.jsp -text
+WebContent/resources/layout(old).css -text
 WebContent/resources/layout.css -text
 WebContent/resources/slick.min.css -text
 WebContent/resources/style.css -text
 WebContent/resources/styles.css -text
+WebContent/search_home.jsp -text
 WebContent/sparcResult.jsp -text
 WebContent/sparcSearch.jsp -text
 WebContent/statisticsLoad.jsp -text
