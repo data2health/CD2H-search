@@ -443,6 +443,20 @@ input {
     				</div>
   				</div>
   			</div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="https://www.project-redcap.org">REDCap Library</a><p>(2,142 entries)</p></h5>
+                            <ul class="list-group">
+                                    <li>Data Collection Instruments</li>
+                            </ul>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
 			
 		</div>
 	</div>

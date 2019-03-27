@@ -11,6 +11,7 @@
 .settings/org.eclipse.wst.jsdt.ui.superType.name -text
 .settings/org.eclipse.wst.validation.prefs -text
 WebContent/META-INF/MANIFEST.MF -text
+WebContent/REDCap/instrument.jsp -text
 WebContent/WEB-INF/web.xml -text svneol=unset#application/xml
 WebContent/conceptHierarchy.jsp -text
 WebContent/facetSearch.jsp -text
