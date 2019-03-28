@@ -25,13 +25,16 @@ WebContent/images/bullet-l1.gif -text svneol=unset#image/gif
 WebContent/images/cd2h_honeycomb.png -text svneol=unset#image/png
 WebContent/images/cd2h_invent.png -text svneol=unset#image/png
 WebContent/images/ctsa-g-logo.jpg -text svneol=unset#image/jpeg
+WebContent/images/idtf_map.png -text svneol=unset#image/png
 WebContent/images/labs-logo.png -text svneol=unset#image/png
 WebContent/images/labslogo2.png -text svneol=unset#image/png
+WebContent/images/logo_sprite.png -text svneol=unset#image/png
 WebContent/images/masthead-divider.png -text svneol=unset#image/png
 WebContent/images/masthead-hhs-logo.png -text svneol=unset#image/png
 WebContent/images/masthead-nih-logo.png -text svneol=unset#image/png
 WebContent/images/onlinelogomaker-111617-1142-7717.png -text svneol=unset#image/png
 WebContent/images/person_icon.png -text svneol=unset#image/png
+WebContent/images/tile_background4.png -text svneol=unset#image/png
 WebContent/index.jsp -text
 WebContent/local_nav.jsp -text
 WebContent/nestedFacet.jsp -text

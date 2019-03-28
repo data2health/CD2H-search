@@ -168,64 +168,6 @@ ul > li {
 	}
 }
 
-
-/************************/
-/* Navigation Bar */
-/************************/
-navbar-toggler {
-  background-color: #393f4d!important;
- }
-.bg-dark {
-    background-color: #393f4d!important;
-}
-.navbar-nav .show>.nav-link {
-    color: white;
-}
-.navbar-dark .navbar-nav .nav-link {
-    color: white!important;
-}
-
-.navbar a:hover{
-	background-color:  #393f4d!important;
-}
-
-navbar-dark .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
-    border: none;
-    outline: 0;
-}
-
-
-nav,
-nav a,
-nav ul,
-nav li,
-nav ul li,
-.dropdown-menu{
-  background-color:  #393f4d;
-  text-transform: uppercase;
-  width: 100!important;
-  color:white;
-  border:none;
-}
-.dropdown-item{
-	color:white;
-}
-
-nav .navbar-brand{
-    background-color: #393f4d;
-    text-transform: uppercase;
-} 
-
-#logo-span{
-	margin-left:3%;
-	margin-top:1%;
-	margin-bottom:0.5%;
-}
-
-#logo-span a{
-	margin-left:4%;
-	background:none;
-}
     
 /************************/
 /* Footer */
@@ -250,6 +192,17 @@ nav .navbar-brand{
     width: 50%;
     float: left;
     padding: 0px 10px 0px 0px;
+}
+
+
+.foot li a:hover{
+	background:transparent;
+	text-decoration: underline;
+}
+
+.foot-logos a:hover{
+	background:transparent;
+	transform: scale(1.01);
 }
 
 /************************/
@@ -406,5 +359,138 @@ table a {
 	padding-top: 6px;
 	
 }
+
+/************************/
+/* Project Cards */
+/************************/
+.accent_card i{
+	color:#286c91;
+}
+
+.accent_card a:hover{
+	background-color: transparent;
+}
+
+.accent_card .projects{
+	background-color:white;
+	border-color:white;
+}
+
+.accent_card .card-title{
+	color:#52555b;
+}
+
+.accent_card .list-group-item{
+	background-image: url('../images/tile_background4.png');
+	background-repeat: no-repeat;
+  	background-size: 100% 100%;
+	color:#eff2f7;
+	border-color: white;
+	height: 200px;
+	padding: 1.1rem .8rem;
+}
+
+.accent_card .list-group-item:hover{
+	border:0px;
+	transform: scale(1.01);
+}
+
+.accent_card .list-title{
+	color:white;
+	padding-bottom:10px;
+}
+
+.accent_card .d-flex{
+	height:30%;
+}
+
+.button-filter .dropdown-item{
+	color:black;
+}
+
+/************************/
+/* Navigation Bar */
+/************************/
+
+#labs_image {
+	height: 70px;
+	width: 110px;
+	background: url('../images/logo_sprite.png') -330px 0px;
+}
+
+navbar-toggler {
+  background-color: #393f4d!important;
+ }
+.bg-dark {
+    background-color: #393f4d!important;
+}
+.navbar-nav .show>.nav-link {
+    color: white;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: white!important;
+}
+
+.navbar a:hover{
+	background-color:  #393f4d!important;
+}
+
+navbar-dark .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+    border: none;
+    outline: 0;
+}
+
+
+nav .dropdown-item:hover{
+	color:#c9dee5;
+}
+
+nav,
+nav a,
+nav ul,
+nav li,
+nav ul li,
+.dropdown-menu{
+  background-color:  #393f4d;
+  text-transform: uppercase;
+  width: 100!important;
+  color:white;
+  border:none;
+}
+.dropdown-item{
+	color:white;
+}
+
+nav .navbar-brand{
+    background-color: #393f4d;
+    text-transform: uppercase;
+} 
+
+#logo-span{
+	margin-left:3%;
+	margin-top:1%;
+	margin-bottom:0.5%;
+}
+
+#logo-span a{
+	margin-left:4%;
+	background:none;
+}
+
+nav .card-header {
+	border-top:0px;
+	border-bottom:0px;
+}
+
+nav .card{
+	border:0px;
+	background-color: #393f4d;
+}
+
+nav .card-header a:visited, nav .card-header a:hover  {
+	background-color: #393f4d;
+	color:white;
+}
+
 
 
