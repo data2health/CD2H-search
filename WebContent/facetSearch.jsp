@@ -384,7 +384,7 @@ input {
   				<div class="col-sm-3">
     				<div class="card">
       					<div class="card-body">
-        					<h5 class="card-title"><a href="https://datacite.org/">DataCite.org</a><p>(13,535,764 entries)</p></h5>
+        					<h5 class="card-title"><a href="https://datacite.org/">DataCite.org</a><p>(14,805,692 entries)</p></h5>
         					<ul class="list-group">
 									<li>Data Sets</li>
 									<br>
@@ -434,6 +434,20 @@ input {
   				<div class="col-sm-3">
     				<div class="card">
       					<div class="card-body">
+        					<h5 class="card-title"><a href="https://clic-ctsa.org/education">CLIC Education Clearinghouse</a><p>(30 entries)</p></h5>
+        					<ul class="list-group">
+									<li>Educational Resources</li>
+									<br>
+							</ul>
+      					</div>
+    				</div>
+  				</div>
+  			</div>
+  			<br>
+ 			<div class="row">
+  				<div class="col-sm-3">
+    				<div class="card">
+      					<div class="card-body">
         					<h5 class="card-title"><a href="https://grants.nih.gov/funding/searchguide/index.html#/">NIH Funding Opportunity Announcements</a><p>(1,220 entries)</p></h5>
         					<ul class="list-group">
 									<li>FOAs</li>
@@ -442,15 +456,23 @@ input {
       					</div>
     				</div>
   				</div>
-  			</div>
-            <br>
-            <div class="row">
-                <div class="col-sm-3">
+                 <div class="col-sm-3">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title"><a href="https://www.project-redcap.org">REDCap Library</a><p>(2,142 entries)</p></h5>
                             <ul class="list-group">
                                     <li>Data Collection Instruments</li>
+                            </ul>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="https://sparc.musc.edu">MUSC SPARCRequest</a><p>(21,809 entries)</p></h5>
+                            <ul class="list-group">
+                                    <li>Services</li>
                             </ul>
                             <br>
                         </div>
