@@ -84,6 +84,7 @@ input {
                     <lucene:countFacetRequest categoryPath="Phase" />
                     <lucene:countFacetRequest categoryPath="Type" />
                     <lucene:countFacetRequest categoryPath="Condition" />
+                    <lucene:countFacetRequest categoryPath="CPT" depth="4" />
 					
 					<c:set var="drillDownList"><lucene:drillDownProcessor categoryPaths="${param.drillDown}" drillUpCategory="${param.drillUp}" drillOutCategory="${param.drillOut}" /></c:set>
 
