@@ -48,6 +48,7 @@ WebContent/resources/slick.min.css -text
 WebContent/resources/style.css -text
 WebContent/resources/styles.css -text
 WebContent/search_home.jsp -text
+WebContent/serviceSearch.jsp -text
 WebContent/sparcResult.jsp -text
 WebContent/sparcSearch.jsp -text
 WebContent/statisticsLoad.jsp -text
