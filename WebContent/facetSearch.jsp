@@ -76,6 +76,7 @@ input {
 					<lucene:countFacetRequest categoryPath="Unit" depth="2" />
                     <lucene:countFacetRequest categoryPath="Site" depth="3" />
 					<lucene:countFacetRequest categoryPath="CTSA" />
+                    <lucene:countFacetRequest categoryPath="Year" />
                     <lucene:countFacetRequest categoryPath="Learning Level" />
                     <lucene:countFacetRequest categoryPath="Assessment Method" />
                     <lucene:countFacetRequest categoryPath="Competency Domain" />
@@ -480,6 +481,30 @@ input {
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="https://www.ncbi.nlm.nih.gov/pubmed">NIH PubMed - partial (MEDLINE)</a><p>(3,364,632 entries)</p></h5>
+                            <ul class="list-group">
+                                    <li>Articles</li>
+                            </ul>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="https://projectreporter.nih.gov/reporter.cfm">NIH RePORTER</a><p>(429,612 entries)</p></h5>
+                            <ul class="list-group">
+                                    <li>Funding Awards</li>
+                            </ul>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+             </div>
 			
 		</div>
 	</div>
