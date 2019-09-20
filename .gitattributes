@@ -36,6 +36,7 @@ WebContent/images/onlinelogomaker-111617-1142-7717.png -text svneol=unset#image/
 WebContent/images/person_icon.png -text svneol=unset#image/png
 WebContent/images/tile_background4.png -text svneol=unset#image/png
 WebContent/index.jsp -text
+WebContent/index_old.jsp -text
 WebContent/local_nav.jsp -text
 WebContent/nestedFacet.jsp -text
 WebContent/resources/cd2h -text
