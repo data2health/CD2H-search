@@ -50,7 +50,7 @@ input {
 		<div class="col">
 			<h2><i style="color:#7bbac6;"class="fas fa-search"></i> Faceted Search</h2>
 			<div id=form>
-				<form method='GET' action='COVIDsearch.jsp'>
+				<form method='POST' action='COVIDsearch.jsp'>
 					<fieldset>
 						<input class='search-box' name="query" value="${param.query}" size=50> 
 						<input type=submit name=submitButton value=Go!>
@@ -353,7 +353,7 @@ input {
   				<div class="col-sm-3">
     				<div class="card">
       					<div class="card-body">
-        					<h5 class="card-title"><a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a><p>(290,568 entries)</p></h5>
+        					<h5 class="card-title"><a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a></h5>
         					<ul class="list-group">
 									<li>Clinical Trials</li>
 									<li>Official Contacts</li>
@@ -364,9 +364,9 @@ input {
   				<div class="col-sm-3">
     				<div class="card">
       					<div class="card-body">
-        					<h5 class="card-title"><a href="http://research.icts.uiowa.edu/polyglot/">CTSAsearch</a><p>(238,894 entries)</p></h5>
+        					<h5 class="card-title"><a href="http"//biorxiv.org">bioRxiv</a></h5>
         					<ul class="list-group">
-									<li>People and Expertise</li>
+									<li>Preprints</li>
 							</ul>
 							<br>
       					</div>
@@ -375,9 +375,9 @@ input {
   				<div class="col-sm-3">
     				<div class="card">
       					<div class="card-body">
-        					<h5 class="card-title"><a href="https://datamed.org/">DataMed.org (bioCADDIE)</a> <p>(1,252,785 entries)</p></h5>
+        					<h5 class="card-title"><a href="https://medRxiv.org">medRxiv</a></h5>
         					<ul class="list-group">
-									<li>Data Sets</li>
+									<li>Preprints</li>
 							</ul>
 							<br>
       					</div>
@@ -386,127 +386,15 @@ input {
   				<div class="col-sm-3">
     				<div class="card">
       					<div class="card-body">
-        					<h5 class="card-title"><a href="https://datacite.org/">DataCite.org</a><p>(14,805,692 entries)</p></h5>
+        					<h5 class="card-title"><a href="https://www.ncbi.nlm.nih.gov/research/coronavirus/">LitCOVID</a></h5>
         					<ul class="list-group">
-									<li>Data Sets</li>
+									<li>Publications</li>
 									<br>
 							</ul>
       					</div>
     				</div>
   				</div>
   			</div>
-			<br>
-			<div class="row">
-  				<div class="col-sm-3">
-    				<div class="card">
-      					<div class="card-body">
-        					<h5 class="card-title"><a href="https://github.com/about">GitHub</a><p>(1,235 entries)</p></h5>
-        					<ul class="list-group">
-									<li>Users</li>
-									<li>Organizations</li>
-									<li>Repositories</li>
-							</ul>
-      					</div>
-    				</div>
-  				</div>
-  				<div class="col-sm-3">
-    				<div class="card">
-      					<div class="card-body">
-        					<h5 class="card-title"><a href="http://alaska.dev.eagle-i.net/">N-Lighten</a><p>(110 entries)</p></h5>
-        					<ul class="list-group">
-									<li>Users</li>
-									<li>Organizations</li>
-									<li>Educational Resources</li>
-							</ul>
-      					</div>
-    				</div>
-  				</div>
-  				<div class="col-sm-3">
-    				<div class="card">
-      					<div class="card-body">
-        					<h5 class="card-title"><a href="https://clic-ctsa.org/diamond">DIAMOND</a><p>(103 entries)</p></h5>
-        					<ul class="list-group">
-									<li>Assessment Materials</li>
-									<li>Training Materials</li>
-									<br>
-							</ul>
-      					</div>
-    				</div>
-  				</div>
-  				<div class="col-sm-3">
-    				<div class="card">
-      					<div class="card-body">
-        					<h5 class="card-title"><a href="https://clic-ctsa.org/education">CLIC Education Clearinghouse</a><p>(30 entries)</p></h5>
-        					<ul class="list-group">
-									<li>Educational Resources</li>
-									<br>
-							</ul>
-      					</div>
-    				</div>
-  				</div>
-  			</div>
-  			<br>
- 			<div class="row">
-  				<div class="col-sm-3">
-    				<div class="card">
-      					<div class="card-body">
-        					<h5 class="card-title"><a href="https://grants.nih.gov/funding/searchguide/index.html#/">NIH Funding Opportunity Announcements</a><p>(1,220 entries)</p></h5>
-        					<ul class="list-group">
-									<li>FOAs</li>
-							</ul>
-							<br>
-      					</div>
-    				</div>
-  				</div>
-                 <div class="col-sm-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="https://www.project-redcap.org">REDCap Library</a><p>(2,142 entries)</p></h5>
-                            <ul class="list-group">
-                                    <li>Data Collection Instruments</li>
-                            </ul>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="https://sparc.musc.edu">MUSC SPARCRequest</a><p>(21,809 entries)</p></h5>
-                            <ul class="list-group">
-                                    <li>Services</li>
-                            </ul>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="https://www.ncbi.nlm.nih.gov/pubmed">NIH PubMed - partial (MEDLINE)</a><p>(3,364,632 entries)</p></h5>
-                            <ul class="list-group">
-                                    <li>Articles</li>
-                            </ul>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-sm-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="https://projectreporter.nih.gov/reporter.cfm">NIH RePORTER</a><p>(429,612 entries)</p></h5>
-                            <ul class="list-group">
-                                    <li>Funding Awards</li>
-                            </ul>
-                            <br>
-                        </div>
-                    </div>
-                </div>
-             </div>
-			
 		</div>
 	</div>
 				
