@@ -89,7 +89,7 @@ input {
 					
 					<c:set var="drillDownList"><lucene:drillDownProcessor categoryPaths="${param.drillDown}" drillUpCategory="${param.drillUp}" drillOutCategory="${param.drillOut}" /></c:set>
 
-					<lucene:search lucenePath="/usr/local/CD2H/lucene/covidsearch" label="content" queryParserName="boolean" queryString="${param.query}" useConjunctionByDefault="true">
+					<lucene:search lucenePath="/usr/local/CD2H/lucene/covidsearch" label="content" queryParserName="biomedical" queryString="${param.query}" >
 						<div style="with: 100%">
 							<div id ="facet-box" style="width: 40%; padding: 0px 80px 0px 0px; float: left">
 								<h5>Facets:</h5>
