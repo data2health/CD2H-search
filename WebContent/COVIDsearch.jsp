@@ -319,7 +319,7 @@ input {
   			<br/>
   			<h5>Embedding</h5>
   			<p>Feel free to embed COVIDsearch into your local environment using the following:</p>
-  			<code>&lt;iframe src="https://labs.cd2h.org/search/COVIDsearch.jsp" /&gt;</code>
+  			<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;iframe src="https://labs.cd2h.org/search/COVIDsearch.jsp" /&gt;</code>
 		</div>
 	</div>
 				
