@@ -43,12 +43,14 @@ input {
 </style>
 
 <body class="home page-template-default page page-id-6 CD2H">
-	<jsp:include page="header.jsp" flush="true" />
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 	<div class="container-fluid" style="padding-left:5%; padding-right:5%;">
 		<br/> <br/> 
 		<div class="col">
-			<h2><i style="color:#7bbac6;"class="fas fa-search"></i> Faceted Search</h2>
+			<h2><i style="color:#7bbac6;"class="fas fa-search"></i>COVIDsearch</h2>
 			<div id=form>
 				<form method='POST' action='COVIDsearch.jsp'>
 					<fieldset>
@@ -92,7 +94,7 @@ input {
 					<lucene:search lucenePath="/usr/local/CD2H/lucene/covidsearch" label="content" queryParserName="biomedical" queryString="${param.query}" >
 						<div style="with: 100%">
 							<div id ="facet-box" style="width: 40%; padding: 0px 80px 0px 0px; float: left">
-								<h5>Facets:</h5>
+								<h5>Drill down in these results by:</h5>
 								<div class='card' style="with: 100%">
 								<div class="card-body" style="padding-right:30px">
 								<ol class="facetList" id='top'>
@@ -154,7 +156,7 @@ input {
 																				</button>
 																			</div>
 																			<div class = 'facet-list-item'>
-																				<a href="COVIDsearch.jsp?query=${param.query}&drillDown=${drillDownList}${facet2path}">${facet2}</a> (<lucene:facet label="count" />)
+																				<a href='COVIDsearch.jsp?query=${fn:replace(param.query,"&","%26")}&drillDown=${drillDownList}${facet2path}'>${facet2}</a> (<lucene:facet label="count" />)
 																			</div>
 																	</c:when>
 																	<c:when	test="${fn:contains(drillDownList, facet2path.concat('|')) and count_children ==0}">
@@ -165,7 +167,7 @@ input {
 																				</button>
 																			</div>
 																			<div class = 'facet-list-item'>
-																				<lucene:facet label="content" /> <a	class="facet-move" href="COVIDsearch.jsp?query=${param.query}&drillDown=${drillDownList}&drillUp=${facet2path}" title="Remove Filter"><i class="far fa-times-circle"></i></a>
+																				<lucene:facet label="content" /> <a	class="facet-move" href='COVIDsearch.jsp?query=${fn:replace(param.query,"&","%26")}&drillDown=${drillDownList}&drillUp=${facet2path}' title="Remove Filter"><i class="far fa-times-circle"></i></a>
 																			</div>
 																	</c:when>
 																	<c:when test="${fn:contains(drillDownList, facet2path) and count_children ==0}">
@@ -187,7 +189,7 @@ input {
 																				</button>
 																			</div>
 																			<div class = 'facet-list-item'>
-																				<lucene:facet label="content" /> <a	class="facet-move" href="COVIDsearch.jsp?query=${param.query}&drillDown=${drillDownList}&drillUp=${facet2path}" title="Remove Filter"><i class="far fa-times-circle"></i></a>
+																				<lucene:facet label="content" /> <a	class="facet-move" href='COVIDsearch.jsp?query=${fn:replace(param.query,"&","%26")}&drillDown=${drillDownList}&drillUp=${facet2path}' title="Remove Filter"><i class="far fa-times-circle"></i></a>
 																			</div>
 																	</c:when>
 																	<c:when test="${fn:contains(drillDownList, facet2path)}">
@@ -209,7 +211,7 @@ input {
 																				</button>
 																			</div>
 																			<div class = 'facet-list-item'> 
-																				<a href="COVIDsearch.jsp?query=${param.query}&drillDown=${drillDownList}${facet2path}">${facet2}</a> (<lucene:facet label="count" />)
+																				<a href='COVIDsearch.jsp?query=${fn:replace(param.query,"&","%26")}&drillDown=${drillDownList}${facet2path}'>${facet2}</a> (<lucene:facet label="count" />)
 																			</div>
 																	</c:otherwise>
 																</c:choose>
@@ -266,7 +268,8 @@ input {
 							<div id="results-box">
 								<div id="results-header-box">
 									<h3 id="results-header">Search Results:</h3>
-									<p>Result Count: <lucene:count /></p>
+									<c:set var="count"><lucene:count/></c:set>
+									<p>Result Count: <lucene:count /><c:if test="${count >=1000}">+ (search results currently limited to 1000)</c:if></p>
 								</div>
 								<div id="results-table" onscroll="scrollFunction()">
 									<table style="width:100%">
@@ -276,7 +279,7 @@ input {
 	  									</tr>
 										<lucene:searchIterator>
 											<tr>
-												<td><a href="<lucene:hit label="uri" />"><lucene:hit label="label" /></a></td>
+												<td><a href="<lucene:hit label="uri" />" target="_parent"><lucene:hit label="label" /></a></td>
 												<td> <lucene:hit label="source" /></td>
 											<tr>
 										</lucene:searchIterator>
@@ -292,60 +295,6 @@ input {
                 </div>
 			</c:when>
 			<c:otherwise>
-				<div class='desc-text' style="width:80%;">
-				<p>This proof-of-concept explores multi-faceted search across multiple federated sources, both internal to CD2H and the CTSA Consortium and more broadly across the entire informatics community.
-				<b>Comments and questions are welcome!</b> We are particularly interested in feedback regarding the nature and organization of the facets used to filter search results. The facet taxonomy is readily
-				restructured as we index data.</p>
-				</div>
-<!-- 				<div class='desc-body' style='padding-left:5%;'> -->
-<!-- 				<h4>Sources and Entity Types</h4> -->
-<!-- 				<div class = 'desc-list' style="float:left;"> -->
-<!-- 				<ul class="list-group"> -->
-<!-- 					<li>ClinicalTrials.gov <i>(290,568 entries)</i> -->
-<!-- 					<ul class="list-group"> -->
-<!-- 						<li>Clinical Trial -->
-<!-- 						<li>Official Contact -->
-<!-- 					</ul> -->
-<!-- 					<li>CTSAsearch <i>(238,894 entries)</i> -->
-<!-- 					<ul class="list-group"> -->
-<!-- 						<li>Person -->
-<!-- 					</ul> -->
-<!-- 					<li>DataMed.org (bioCADDIE) <i>(1,252,785 entries)</i> -->
-<!-- 					<ul class="list-group"> -->
-<!-- 						<li>Data Set -->
-<!-- 					</ul> -->
-<!-- 					<li>DataCite.org <i>(13,535,764 entries)</i> -->
-<!-- 					<ul class="list-group"> -->
-<!-- 						<li>Data Set -->
-<!-- 					</ul> -->
-<!-- 				</ul> -->
-<!-- 				</div> -->
-<!-- 				<div class='desc-list' style="float:left;"> -->
-<!-- 				<ul class = "list-group"> -->
-<!-- 					<li>GitHub <i>(1,235 entries)</i> -->
-<!-- 					<ul class="list-group"> -->
-<!-- 						<li>User -->
-<!-- 						<li>Organization -->
-<!-- 						<li>Repository -->
-<!-- 					</ul> -->
-<!-- 					<li>N-Lighten <i>(110 entries)</i> -->
-<!-- 					<ul class="list-group"> -->
-<!-- 						<li>User -->
-<!-- 						<li>Organization -->
-<!-- 						<li>Educational Resource -->
-<!-- 					</ul> -->
-<!-- 					<li>DIAMOND <i>(103 entries)</i> -->
-<!-- 					<ul class="list-group"> -->
-<!-- 						<li>Assessment -->
-<!-- 						<li>Training Material -->
-<!-- 					</ul> -->
-<!-- 					<li>NIH Funding Opportunity Announcements <i>(1,220 entries)</i> -->
-<!-- 					<ul class="list-group"> -->
-<!-- 						<li>FOA -->
-<!-- 					</ul> -->
-<!-- 				</ul> -->
-<!-- 				</div> -->
-
 			<div class="container-fluid">
 			<hr>
 			<h4 style="text-align:center; font-weight:400;"><i style="color:#6ba097;"class="fas fa-database"></i>   Sources and Entity Types:</h4><br>
@@ -356,7 +305,6 @@ input {
         					<h5 class="card-title"><a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a></h5>
         					<ul class="list-group">
 									<li>Clinical Trials</li>
-									<li>Official Contacts</li>
 							</ul>
       					</div>
     				</div>
@@ -364,12 +312,11 @@ input {
   				<div class="col-sm-3">
     				<div class="card">
       					<div class="card-body">
-        					<h5 class="card-title"><a href="http"//biorxiv.org">bioRxiv</a></h5>
+        					<h5 class="card-title"><a href="https://biorxiv.org">bioRxiv</a></h5>
         					<ul class="list-group">
 									<li>Preprints</li>
 							</ul>
-							<br>
-      					</div>
+     					</div>
     				</div>
   				</div>
   				<div class="col-sm-3">
@@ -379,7 +326,6 @@ input {
         					<ul class="list-group">
 									<li>Preprints</li>
 							</ul>
-							<br>
       					</div>
     				</div>
   				</div>
@@ -389,21 +335,21 @@ input {
         					<h5 class="card-title"><a href="https://www.ncbi.nlm.nih.gov/research/coronavirus/">LitCOVID</a></h5>
         					<ul class="list-group">
 									<li>Publications</li>
-									<br>
 							</ul>
       					</div>
     				</div>
   				</div>
   			</div>
+  			<br/>
+  			<h5>Embedding</h5>
+  			<p>Feel free to embed COVIDsearch into your local environment using the following:</p>
+  			<code>&lt;iframe src="https://labs.cd2h.org/search/COVIDsearch.jsp" /&gt;</code>
 		</div>
 	</div>
 				
 			
 			</c:otherwise>
 			</c:choose>
-            <div style="width: 100%; float: left">
-                <jsp:include page="footer.jsp" flush="true" />
-            </div>
 		</div>
 	</div>
 
