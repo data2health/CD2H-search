@@ -299,7 +299,25 @@ input {
 			<hr>
 			<h4 style="text-align:center; font-weight:400;"><i style="color:#6ba097;"class="fas fa-database"></i>   Sources and Entity Types:</h4><br>
 			<div class="row">
-  				<div class="col-sm-3">
+ <sql:query var="sources" dataSource="jdbc/COVID">
+    select source,last_update,count from covid.stats order by last_update
+</sql:query>
+   <c:forEach items="${sources.rows}" var="row" varStatus="rowCounter">
+   				<div class="col-sm-3">
+    				<div class="card">
+      					<div class="card-body">
+        					<h5 class="card-title"><a href="https://clinicaltrials.gov/">${row.source}</a></h5>
+        					<ul class="list-group">
+									<li>Last Updated: ${row.last_update}</li>
+									<li>Entries: ${row.count}</li>
+							</ul>
+      					</div>
+    				</div>
+  				</div>
+   </c:forEach>
+</div>
+			<div class="row">
+   				<div class="col-sm-3">
     				<div class="card">
       					<div class="card-body">
         					<h5 class="card-title"><a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a></h5>
