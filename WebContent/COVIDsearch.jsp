@@ -300,7 +300,7 @@ input {
 			<h4 style="text-align:center; font-weight:400;"><i style="color:#6ba097;"class="fas fa-database"></i>   Sources and Entity Types:</h4><br>
 			<div class="row">
  <sql:query var="sources" dataSource="jdbc/COVID">
-    select source,description,to_char(last_update, 'YYYY-MM-DD HH:MI') as last_update,count from covid.stats order by last_update desc;
+    select source,description,to_char(last_update, 'YYYY-MM-DD HH:MI') as updated,count from covid.stats order by last_update desc;
 </sql:query>
    <c:forEach items="${sources.rows}" var="row" varStatus="rowCounter">
    				<div class="col-sm-3">
@@ -308,7 +308,7 @@ input {
       					<div class="card-body">
         					<h5 class="card-title">${row.description}</h5>
         					<ul class="list-group">
-									<li>Last Updated: ${row.last_update}</li>
+									<li>Last Updated: ${row.updated}</li>
 									<li>Entries: ${row.count}</li>
 							</ul>
       					</div>
