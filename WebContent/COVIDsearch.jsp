@@ -300,13 +300,13 @@ input {
 			<h4 style="text-align:center; font-weight:400;"><i style="color:#6ba097;"class="fas fa-database"></i>   Sources and Entity Types:</h4><br>
 			<div class="row">
  <sql:query var="sources" dataSource="jdbc/COVID">
-    select source,last_update,count from covid.stats order by last_update
+    select source,description,to_char(last_update, 'YYYY-MM-DD HH:MI') as last_update,count from covid.stats order by last_update desc;
 </sql:query>
    <c:forEach items="${sources.rows}" var="row" varStatus="rowCounter">
    				<div class="col-sm-3">
     				<div class="card">
       					<div class="card-body">
-        					<h5 class="card-title"><a href="https://clinicaltrials.gov/">${row.source}</a></h5>
+        					<h5 class="card-title">${row.description}</h5>
         					<ul class="list-group">
 									<li>Last Updated: ${row.last_update}</li>
 									<li>Entries: ${row.count}</li>
@@ -316,48 +316,6 @@ input {
   				</div>
    </c:forEach>
 </div>
-			<div class="row">
-   				<div class="col-sm-3">
-    				<div class="card">
-      					<div class="card-body">
-        					<h5 class="card-title"><a href="https://clinicaltrials.gov/">ClinicalTrials.gov</a></h5>
-        					<ul class="list-group">
-									<li>Clinical Trials</li>
-							</ul>
-      					</div>
-    				</div>
-  				</div>
-  				<div class="col-sm-3">
-    				<div class="card">
-      					<div class="card-body">
-        					<h5 class="card-title"><a href="https://biorxiv.org">bioRxiv</a></h5>
-        					<ul class="list-group">
-									<li>Preprints</li>
-							</ul>
-     					</div>
-    				</div>
-  				</div>
-  				<div class="col-sm-3">
-    				<div class="card">
-      					<div class="card-body">
-        					<h5 class="card-title"><a href="https://medRxiv.org">medRxiv</a></h5>
-        					<ul class="list-group">
-									<li>Preprints</li>
-							</ul>
-      					</div>
-    				</div>
-  				</div>
-  				<div class="col-sm-3">
-    				<div class="card">
-      					<div class="card-body">
-        					<h5 class="card-title"><a href="https://www.ncbi.nlm.nih.gov/research/coronavirus/">LitCOVID</a></h5>
-        					<ul class="list-group">
-									<li>Publications</li>
-							</ul>
-      					</div>
-    				</div>
-  				</div>
-  			</div>
   			<br/>
   			<h5>Embedding</h5>
   			<p>Feel free to embed COVIDsearch into your local environment using the following:</p>
