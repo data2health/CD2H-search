@@ -314,6 +314,11 @@ input {
       					</div>
     				</div>
   				</div>
+  				<c:if test="${rowCounter.count % 4 == 0}">
+  					</div>
+  					<br/>
+  					<div class="row">
+  				</c:if>
    </c:forEach>
 </div>
   			<br/>
