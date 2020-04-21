@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <jsp:include page="head.jsp" flush="true">
-	<jsp:param name="title" value="COVIDsearch" />
+	<jsp:param name="title" value="COVID-19 Clinical Trial Results Linking" />
 </jsp:include>
 <style type="text/css" media="all">
 @import "resources/layout.css";
@@ -50,14 +50,14 @@ input {
 	<div class="container-fluid" style="padding-left:5%; padding-right:5%;">
 		<br/> <br/> 
 		<div class="col">
-			<h2><i style="color:#7bbac6;"class="fas fa-search"></i>COVIDsearch</h2>
+			<h2><i style="color:#7bbac6;"class="fas fa-search"></i>COVID-19 Clinical Trial Results Reported in Preprints and Publications</h2>
 			<div id=form>
-				<form method='POST' action='COVIDsearch.jsp'>
+				<form method='POST' action='COVID_trial_results.jsp'>
 					<fieldset>
 						<input class='search-box' name="query" value="${param.query}" size=50> 
 						<input type=submit name=submitButton value=Go!>
 						<c:if test="${not empty param.query}">
-							<a class="search-reset" href="COVIDsearch.jsp" title="Reset Search"><i class="far fa-times-circle"></i></a>
+							<a class="search-reset" href="COVID_trial_results.jsp?query=.*" title="Reset Search"><i class="far fa-times-circle"></i></a>
 						</c:if>
 					</fieldset>
 				</form>
@@ -72,18 +72,17 @@ input {
 				
 				<h3><c:out value="${displayString}" /></h3>
                 <div style="width: 100%; float: left">
-				<lucene:taxonomy taxonomyPath="/usr/local/CD2H/lucene/covidsearch_tax">
-					<lucene:countFacetRequest categoryPath="Source" depth="3" />
-					<lucene:countFacetRequest categoryPath="Entity" depth="3" />
+				<lucene:taxonomy taxonomyPath="/usr/local/CD2H/lucene/trial_results_tax">
+					<lucene:countFacetRequest categoryPath="Trial Source" depth="3" />
+                    <lucene:countFacetRequest categoryPath="Intervention" depth="3" />
+					<lucene:countFacetRequest categoryPath="Publication Source" depth="3" />
 					<lucene:countFacetRequest categoryPath="Unit" depth="2" />
-                    <lucene:countFacetRequest categoryPath="Site" depth="3" />
 					<lucene:countFacetRequest categoryPath="CTSA" />
                     <lucene:countFacetRequest categoryPath="Year" />
                     <lucene:countFacetRequest categoryPath="Learning Level" />
                     <lucene:countFacetRequest categoryPath="Assessment Method" />
                     <lucene:countFacetRequest categoryPath="Competency Domain" />
                     <lucene:countFacetRequest categoryPath="Delivery Method" />
-                    <lucene:countFacetRequest categoryPath="Intervention" depth="3" />
                     <lucene:countFacetRequest categoryPath="Status" />
                     <lucene:countFacetRequest categoryPath="Phase" />
                     <lucene:countFacetRequest categoryPath="Type" />
@@ -92,7 +91,7 @@ input {
 					
 					<c:set var="drillDownList"><lucene:drillDownProcessor categoryPaths="${param.drillDown}" drillUpCategory="${param.drillUp}" drillOutCategory="${param.drillOut}" /></c:set>
 
-					<lucene:search lucenePath="/usr/local/CD2H/lucene/covidsearch" label="content" queryParserName="biomedical" queryString="${param.query}" >
+					<lucene:search lucenePath="/usr/local/CD2H/lucene/trial_results" label="content" queryParserName="biomedical" queryString="${param.query}" >
 						<div style="with: 100%">
 							<div id ="facet-box" style="width: 40%; padding: 0px 80px 0px 0px; float: left">
 								<h5>Drill down in these results by:</h5>
@@ -157,7 +156,7 @@ input {
 																				</button>
 																			</div>
 																			<div class = 'facet-list-item'>
-																				<a href='COVIDsearch.jsp?query=${fn:replace(param.query,"&","%26")}&drillDown=${drillDownList}${facet2path}'>${facet2}</a> (<lucene:facet label="count" />)
+																				<a href='COVID_trial_results.jsp?query=${fn:replace(param.query,"&","%26")}&drillDown=${drillDownList}${facet2path}'>${facet2}</a> (<lucene:facet label="count" />)
 																			</div>
 																	</c:when>
 																	<c:when	test="${fn:contains(drillDownList, facet2path.concat('|')) and count_children ==0}">
@@ -168,7 +167,7 @@ input {
 																				</button>
 																			</div>
 																			<div class = 'facet-list-item'>
-																				<lucene:facet label="content" /> <a	class="facet-move" href='COVIDsearch.jsp?query=${fn:replace(param.query,"&","%26")}&drillDown=${drillDownList}&drillUp=${facet2path}' title="Remove Filter"><i class="far fa-times-circle"></i></a>
+																				<lucene:facet label="content" /> <a	class="facet-move" href='COVID_trial_results.jsp?query=${fn:replace(param.query,"&","%26")}&drillDown=${drillDownList}&drillUp=${facet2path}' title="Remove Filter"><i class="far fa-times-circle"></i></a>
 																			</div>
 																	</c:when>
 																	<c:when test="${fn:contains(drillDownList, facet2path) and count_children ==0}">
@@ -190,7 +189,7 @@ input {
 																				</button>
 																			</div>
 																			<div class = 'facet-list-item'>
-																				<lucene:facet label="content" /> <a	class="facet-move" href='COVIDsearch.jsp?query=${fn:replace(param.query,"&","%26")}&drillDown=${drillDownList}&drillUp=${facet2path}' title="Remove Filter"><i class="far fa-times-circle"></i></a>
+																				<lucene:facet label="content" /> <a	class="facet-move" href='COVID_trial_results.jsp?query=${fn:replace(param.query,"&","%26")}&drillDown=${drillDownList}&drillUp=${facet2path}' title="Remove Filter"><i class="far fa-times-circle"></i></a>
 																			</div>
 																	</c:when>
 																	<c:when test="${fn:contains(drillDownList, facet2path)}">
@@ -212,7 +211,7 @@ input {
 																				</button>
 																			</div>
 																			<div class = 'facet-list-item'> 
-																				<a href='COVIDsearch.jsp?query=${fn:replace(param.query,"&","%26")}&drillDown=${drillDownList}${facet2path}'>${facet2}</a> (<lucene:facet label="count" />)
+																				<a href='COVID_trial_results.jsp?query=${fn:replace(param.query,"&","%26")}&drillDown=${drillDownList}${facet2path}'>${facet2}</a> (<lucene:facet label="count" />)
 																			</div>
 																	</c:otherwise>
 																</c:choose>
@@ -238,14 +237,14 @@ input {
 																				<c:choose>
 																					<c:when	test="${fn:contains(drillDownList, facet3path.concat('|'))}">
 																						<li><lucene:facet label="content" />
-																						<a	class='facet-move' href="COVIDsearch.jsp?query=${param.query}&drillDown=${drillDownList}&drillOut=${facet3path}" title="Remove This Filter"><i class="far fa-arrow-alt-circle-left"></i></a>
-				                                                                      	<a  class='facet-move' href="COVIDsearch.jsp?query=${param.query}&drillDown=${drillDownList}&drillUp=${facet3path}" title="Remove All Filters in Category"><i class="far fa-times-circle"></i></a>
+																						<a	class='facet-move' href="COVID_trial_results.jsp?query=${param.query}&drillDown=${drillDownList}&drillOut=${facet3path}" title="Remove This Filter"><i class="far fa-arrow-alt-circle-left"></i></a>
+				                                                                      	<a  class='facet-move' href="COVID_trial_results.jsp?query=${param.query}&drillDown=${drillDownList}&drillUp=${facet3path}" title="Remove All Filters in Category"><i class="far fa-times-circle"></i></a>
 		        																	</c:when>
 																					<c:when	test="${fn:contains(drillDownList, facet3path)}">
 																						<li><lucene:facet label="content" />
 																					</c:when>
 																					<c:otherwise>
-																						<li><a	href="COVIDsearch.jsp?query=${param.query}&drillDown=${drillDownList}${facet3path}">${facet3}</a> (<lucene:facet label="count" />)
+																						<li><a	href="COVID_trial_results.jsp?query=${param.query}&drillDown=${drillDownList}${facet3path}">${facet3}</a> (<lucene:facet label="count" />)
 																					</c:otherwise>
 																				</c:choose></li>
 												                              </lucene:facet>
@@ -275,13 +274,17 @@ input {
 								<div id="results-table" onscroll="scrollFunction()">
 									<table style="width:100%">
 	  									<tr>
-	    									<th>Result</th>
-	    									<th>Source</th> 
+	    									<th>Trial</th>
+	    									<th>Trial Source</th> 
+	    									<th>Preprint/Publication</th>
+	    									<th>Publication Source</th> 
 	  									</tr>
 										<lucene:searchIterator>
 											<tr>
-												<td><a href="<lucene:hit label="uri" />" target="_parent"><lucene:hit label="label" /></a></td>
+												<td><a href="<lucene:hit label="trial uri" />" target="_parent"><lucene:hit label="label" /></a></td>
 												<td> <lucene:hit label="source" /></td>
+												<td><a href="<lucene:hit label="pub uri" />" target="_parent"><lucene:hit label="pub label" /></a></td>
+												<td> <lucene:hit label="pub source" /></td>
 											<tr>
 										</lucene:searchIterator>
 									</table>
@@ -298,35 +301,12 @@ input {
 			<c:otherwise>
 			<div class="container-fluid">
 			<hr>
-			<h4 style="text-align:center; font-weight:400;"><i style="color:#6ba097;"class="fas fa-database"></i>   Sources and Entity Types:</h4><br>
 			<div class="row">
- <sql:query var="sources" dataSource="jdbc/COVID">
-    select source,description,to_char(last_update, 'YYYY-MM-DD HH:MIam') as updated,count,category from covid.stats order by last_update desc;
-</sql:query>
-   <c:forEach items="${sources.rows}" var="row" varStatus="rowCounter">
-   				<div class="col-sm-3">
-    				<div class="card">
-      					<div class="card-body">
-        					<h5 class="card-title">${row.description}</h5>
-        					<ul class="list-group">
-									<li>Type: ${row.category}</li>
-									<li>Last Updated: ${row.updated} CT</li>
-									<li>Entries: ${row.count}</li>
-							</ul>
-      					</div>
-    				</div>
-  				</div>
-  				<c:if test="${rowCounter.count % 4 == 0}">
-  					</div>
-  					<br/>
-  					<div class="row">
-  				</c:if>
-   </c:forEach>
-</div>
+ 			</div>
   			<br/>
   			<h5>Embedding</h5>
-  			<p>Feel free to embed COVIDsearch into your local environment using the following:</p>
-  			<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;iframe src="https://labs.cd2h.org/search/COVIDsearch.jsp" /&gt;</code>
+  			<p>Feel free to embed COVID_trial_results into your local environment using the following:</p>
+  			<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;iframe src="https://labs.cd2h.org/search/COVID_trial_results.jsp" /&gt;</code>
 		</div>
 	</div>
 				
